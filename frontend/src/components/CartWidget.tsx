@@ -10,6 +10,7 @@ const GET_CART = gql`
         }
     }
     `
+
 const CartWidget = () => {
 
     const {loading, error, data} = useQuery(GET_CART)
@@ -18,7 +19,7 @@ const CartWidget = () => {
     if(error) return <p>Something went wrong</p>
 
     return ( 
-        <div>
+        <div className="bg-[#e0362d] rounded-lg py-1 px-2">
             <Link to="/cart" className="flex items-center gap-3">
                 <FaCartShopping /> 
                 <p>{data.cart.total} €</p>
@@ -26,5 +27,5 @@ const CartWidget = () => {
         </div> 
      );
 }
- 
+
 export default CartWidget;

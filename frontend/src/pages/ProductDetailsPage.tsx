@@ -22,12 +22,12 @@ const ProductDetailsPage = () => {
     if(error) return <p>Something went wrong</p>
 
     return ( 
-    <main className="px-10 flex gap-10 justify-center">
-        <img className='w-56 h-56 object-cover rounded-lg mb-3' src={data.product.image} alt={data.product.name} />
+    <main className="px-10 flex gap-10 justify-center mt-24">
+        <img className='w-72 h-96 object-cover rounded-lg mb-3' src={data.product.image} alt={data.product.name} />
         <div>
-            <h3 className='text-3xl mb-2'>{data.product.name}</h3>
-            <p className='mb-3'>{data.product.price} €</p> 
-            <p className='max-w-96 mb-5'>{data.product.description}</p> 
+            <h3 className='font-poppins-bold text-3xl mb-2'>{data.product.name}</h3>
+            <p className='font-poppins-reg mb-3'>{data.product.price} €</p> 
+            <p className='font-poppins-reg max-w-96 mb-5'>{data.product.description}</p> 
             <ChangeCartItems/>
         </div>
     </main> 

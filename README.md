@@ -2,6 +2,15 @@ https://www.youtube.com/watch?v=5199E50O7SI
 <br>
 https://www.youtube.com/watch?v=BcLNfwF04Kw
 
+# morgen
+- Produkte nach Preis sortieren
+- Daten in States speichern und rerendern
+- Add/remove Buttons
+- clear cart
+- back-arrow
+- server prüfen
+- testing
+
 # Backend
 1. GraphQL Server aufsetzen
     - get all products ✅
@@ -18,10 +27,10 @@ https://www.youtube.com/watch?v=BcLNfwF04Kw
     - Produktdetailseite: Namen und den Preis des Produkts plus Button für Warenkorb
     - Warenkorbseite: alle Produkte im Warenkorb, Gesamtpreis, delete-Option
 2. Komponenten:
-    - Warenkorb-Widget mit Gesamtpreis
+    - Warenkorb-Widget mit Gesamtpreis ✅
     - Warenkorb-Button
-    - ProductCards
-3. Styling mit tailwind
+    - Hero ✅
+3. Styling mit tailwind ✅
 
 # Weiteres
 - Tests für die Basisfunktionalitäten

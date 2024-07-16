@@ -1,5 +1,6 @@
 import { useQuery, gql } from '@apollo/client';
 import { Link } from 'react-router-dom';
+import Hero from '../components/Hero';
 
 const GET_PRODUCTS = gql`
     query {
@@ -21,20 +22,18 @@ const ProductsPage = () => {
 
 
     return ( 
-    <main className="px-10 mb-20 flex flex-col items-center">
-        <div className="text-center mb-10">  
-            <h1 className='text-2xl mb-2'>Welcome in our shop!</h1>
-            <p>Find all your favorite products in one place.</p>
-        </div>
+    <main className="mb-20 flex flex-col items-center">
+        <Hero/>
 
-        <div className=' grid grid-cols-5 gap-12'>
+        <h2 className='font-poppins-bold text-2xl mb-10'>All products</h2>
+        <div className='px-10 grid grid-cols-4 gap-12'>
             {!loading && !error &&
                 data.products.map((singleProduct: any) => (
-                    <div key={singleProduct.id}  className='mb-5 rounded-lg bg-slate-200 w-fit overflow-hidden' > 
-                        <Link className='flex flex-col items-center ' to={`/products/${singleProduct.id}`}>
-                            <img className='w-36 h-36 object-cover mb-3' src={singleProduct.image} alt={singleProduct.name} />
-                            <h3>{singleProduct.name}</h3>
-                            <p className='mb-3'>{singleProduct.price} €</p>  
+                    <div key={singleProduct.id}  className='mb-5' > 
+                        <Link  to={`/products/${singleProduct.id}`}>
+                            <img className='w-56 h-72 object-cover mb-3 rounded-lg' src={singleProduct.image} alt={singleProduct.name} />
+                            <h3 className='mb-2 font-poppins-reg text-lg'>{singleProduct.name}</h3>
+                            <p className='mb-3 font-poppins-reg text-xs'>{singleProduct.price} €</p>  
                         </Link> 
                     </div>
                 )
