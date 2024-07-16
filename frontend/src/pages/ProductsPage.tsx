@@ -21,13 +21,13 @@ const ProductsPage = () => {
 
 
     return ( 
-    <main className="px-10 mb-20">
+    <main className="px-10 mb-20 flex flex-col items-center">
         <div className="text-center mb-10">  
             <h1 className='text-2xl mb-2'>Welcome in our shop!</h1>
             <p>Find all your favorite products in one place.</p>
         </div>
 
-        <div className=' grid grid-cols-4 gap-5'>
+        <div className=' grid grid-cols-5 gap-12'>
             {!loading && !error &&
                 data.products.map((singleProduct: any) => (
                     <div key={singleProduct.id}  className='mb-5 rounded-lg bg-slate-200 w-fit overflow-hidden' > 

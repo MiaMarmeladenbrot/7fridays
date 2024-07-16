@@ -5,10 +5,10 @@ import { CiSquarePlus } from "react-icons/ci";
 const ChangeCartItems = () => {
     return ( 
     <div className="flex gap-3">
-        <div >
+        <div className="cursor-pointer">
             <CiSquarePlus />
         </div>
-        <div>
+        <div className="cursor-pointer">
             <CiSquareMinus />
         </div>
     </div> );
