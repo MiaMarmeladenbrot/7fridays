@@ -20,7 +20,8 @@ const startServer = () => __awaiter(void 0, void 0, void 0, function* () {
     const app = (0, express_1.default)();
     const server = new apollo_server_express_1.ApolloServer({ typeDefs: schema_1.default, resolvers: resolvers_1.default });
     yield server.start();
-    server.applyMiddleware({ app }); // Workaround: Typenanpassung
+    // geht das nicht schöner? 
+    server.applyMiddleware({ app });
     app.listen({ port: 4000 }, () => console.log(`Server ready at http://localhost:4000/graphql`));
 });
 startServer().catch((error) => {
