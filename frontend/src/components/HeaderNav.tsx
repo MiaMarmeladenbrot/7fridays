@@ -9,10 +9,7 @@ const HeaderNav = () => {
             <Link to="/">            
                 <img className="w-8" src="/images/adfa8454b5eb4ac88263593816419af4-free.png" alt="logo of the shop" />
             </Link>
-            <Link to="/cart">
-               
-               <CartWidget/>
-            </Link>
+            <CartWidget/>
         </nav>
     </header>
     );
