@@ -1,12 +1,14 @@
-import express, { Application } from "express"
-import { ApolloServer } from "apollo-server-express"
-import typeDefs from "./schema"
-import resolvers from "./resolvers"
+import express, { Application } from "express";
+import { ApolloServer } from "apollo-server-express";
+import typeDefs from "./schema";
+import resolvers from "./resolvers";
+import cors from "cors";
 
 
 const startServer = async () => {
     const app: Application = express();
-  
+    app.use(cors());
+
     const server = new ApolloServer({ typeDefs, resolvers });
   
     await server.start();

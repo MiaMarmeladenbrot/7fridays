@@ -16,8 +16,10 @@ const express_1 = __importDefault(require("express"));
 const apollo_server_express_1 = require("apollo-server-express");
 const schema_1 = __importDefault(require("./schema"));
 const resolvers_1 = __importDefault(require("./resolvers"));
+const cors_1 = __importDefault(require("cors"));
 const startServer = () => __awaiter(void 0, void 0, void 0, function* () {
     const app = (0, express_1.default)();
+    app.use((0, cors_1.default)());
     const server = new apollo_server_express_1.ApolloServer({ typeDefs: schema_1.default, resolvers: resolvers_1.default });
     yield server.start();
     // geht das nicht schöner? 

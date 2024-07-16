@@ -25,7 +25,7 @@ const resolvers = {
         })
     },
     Mutation: {
-        // add to cart
+        // add one item to cart via id
         addToCart: (_, { productId }) => {
             const existingCartItem = cartItems.find((singleItem) => singleItem.productId === productId);
             if (existingCartItem) {
@@ -45,7 +45,7 @@ const resolvers = {
                 }, 0)
             };
         },
-        // remove from cart
+        // remove one item from cart via id
         removeFromCart: (_, { productId }) => {
             const indexOfItem = cartItems.findIndex((singleItem) => singleItem.productId === productId);
             if (indexOfItem !== -1) {
@@ -69,7 +69,7 @@ const resolvers = {
                 }, 0)
             };
         },
-        // clear the whole cart
+        // remove all items from cart
         clearCart: () => {
             cartItems = [];
             return {
