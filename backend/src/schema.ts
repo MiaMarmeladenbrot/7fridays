@@ -6,6 +6,7 @@ type Product {
     name: String!
     price: Float!
     description: String!
+    image: String!
 }
 
 type CartItem {

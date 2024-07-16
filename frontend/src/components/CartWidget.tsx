@@ -1,5 +1,12 @@
+import { FaCartShopping } from "react-icons/fa6";
+
 const CartWidget = () => {
-    return ( <footer><h2>Cart Widget</h2></footer> );
+    return ( 
+        <div className="flex items-center gap-3">
+            <FaCartShopping /> 
+            <h2>PRICE</h2>
+        </div> 
+     );
 }
  
 export default CartWidget;

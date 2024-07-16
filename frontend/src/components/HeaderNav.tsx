@@ -1,5 +1,5 @@
-import { FaCartShopping } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import CartWidget from "./CartWidget";
 
 
 const HeaderNav = () => {
@@ -10,7 +10,8 @@ const HeaderNav = () => {
                 <img className="w-8" src="/images/adfa8454b5eb4ac88263593816419af4-free.png" alt="logo of the shop" />
             </Link>
             <Link to="/cart">
-               <FaCartShopping />  
+               
+               <CartWidget/>
             </Link>
         </nav>
     </header>

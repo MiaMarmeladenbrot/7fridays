@@ -3,7 +3,6 @@ import ProductsPage from './pages/ProductsPage';
 import CartPage from './pages/CartPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import HeaderNav from './components/HeaderNav';
-import CartWidget from './components/CartWidget';
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
@@ -22,7 +21,6 @@ function App() {
           <Route path="/products/:id" element={<ProductDetailsPage/>}/>
           <Route path="/cart" element={<CartPage/>}/>
         </Routes>
-        <CartWidget/>
       </BrowserRouter>
     </ApolloProvider>
     </>
