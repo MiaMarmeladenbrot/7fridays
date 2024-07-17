@@ -5,7 +5,6 @@ https://www.youtube.com/watch?v=BcLNfwF04Kw
 https://blog.logrocket.com/build-graphql-react-app-typescript/
 
 # morgen
-- Daten in States speichern und rerendern
 - ts: type object?
 - server prüfen
 - testing

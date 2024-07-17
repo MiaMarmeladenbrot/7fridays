@@ -4,6 +4,8 @@ import CartPage from './pages/CartPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import HeaderNav from './components/HeaderNav';
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+import { CartProvider } from "./contexts/CartContext";
+
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
@@ -14,6 +16,7 @@ function App() {
   return (
     <>
     <ApolloProvider client={client}>
+      <CartProvider>
       <BrowserRouter>
         <HeaderNav/>
         <Routes>
@@ -22,6 +25,7 @@ function App() {
           <Route path="/cart" element={<CartPage/>}/>
         </Routes>
       </BrowserRouter>
+      </CartProvider>
     </ApolloProvider>
     </>
   )

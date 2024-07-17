@@ -2,6 +2,9 @@ import { useQuery, gql } from '@apollo/client';
 import ChangeCartItems from '../components/ChangeCartItems';
 import { Link } from 'react-router-dom';
 import ClearCart from '../components/ClearCart';
+import { useCartContext } from '../contexts/CartContext';
+import { useEffect } from 'react';
+import LoadingIcon from '../components/LoadingIcon';
 
 const GET_CART = gql`
     query {
@@ -22,9 +25,14 @@ const GET_CART = gql`
 
 
 const CartPage = () => {
-    const {loading, error, data} = useQuery(GET_CART)
+    const { updatedCart } = useCartContext()
+    const {loading, error, data, refetch} = useQuery(GET_CART);
 
-    if(loading) return <p>Loading</p>
+    useEffect(()=> {
+        refetch();
+    }, [updatedCart, refetch])
+
+    if(loading) return <LoadingIcon/>
     if(error) return <p>Something went wrong</p>
 
     return ( 

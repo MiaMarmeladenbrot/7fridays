@@ -1,6 +1,7 @@
 import { useQuery, gql } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import AddToCartBtn from '../components/AddToCartBtn';
+import LoadingIcon from '../components/LoadingIcon';
 
 const GET_ONE_PRODUCT = gql`
     query getOneProduct($id: ID!) {
@@ -19,7 +20,7 @@ const ProductDetailsPage = () => {
 
     const {loading, error, data} = useQuery(GET_ONE_PRODUCT, { variables: { id }})
 
-    if(loading) return <p>Loading</p>
+    if(loading) return <LoadingIcon/>
     if(error) return <p>Something went wrong</p>    
 
     return ( 

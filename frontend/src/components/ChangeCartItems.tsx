@@ -3,8 +3,7 @@ import { CiSquarePlus } from "react-icons/ci";
 import { IconContext } from "react-icons";
 import { gql, useMutation } from '@apollo/client';
 import LoadingIcon from "./LoadingIcon";
-
-
+import { useCartContext } from "../contexts/CartContext";
 
 // add new item to cart
 const ADD_TO_CART = gql`
@@ -35,9 +34,14 @@ const REMOVE_FROM_CART = gql`
     }
 `;
 
-const ChangeCartItems = ({productId}:{productId: string}) => {  
+const ChangeCartItems = ({productId}:{productId: string}) => {
+  const { triggerCartUpdate } = useCartContext();
+
     // add to cart
-    const [addToCart, { loading: addLoading, error: addError }] = useMutation(ADD_TO_CART);
+    const [addToCart, { loading: addLoading, error: addError }] = useMutation(ADD_TO_CART, {
+        onCompleted: () => triggerCartUpdate(),
+    });
+
     const handleAddItem = async () => {
         try {
           await addToCart({ variables: {productId} });
@@ -47,7 +51,10 @@ const ChangeCartItems = ({productId}:{productId: string}) => {
       };
     
     // remove from cart
-    const [removeFromCart, { loading: removeLoading, error: removeError }] = useMutation(REMOVE_FROM_CART);
+    const [removeFromCart, { loading: removeLoading, error: removeError }] = useMutation(REMOVE_FROM_CART, {
+        onCompleted: () => triggerCartUpdate(),
+    });
+
     const handleRemoveItem = async () => {
         try {
           await removeFromCart({ variables: {productId} });
@@ -55,7 +62,6 @@ const ChangeCartItems = ({productId}:{productId: string}) => {
           console.error(e);
         }
       };
-
 
     if( addLoading || removeLoading ) return <LoadingIcon/>
     if( addError || removeError ) return <p>Something went wrong</p>

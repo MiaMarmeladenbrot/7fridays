@@ -3,6 +3,8 @@ import { IconContext } from "react-icons";
 
 import { useQuery, gql } from '@apollo/client';
 import { Link } from "react-router-dom";
+import { useCartContext } from "../contexts/CartContext";
+import { useEffect } from "react";
 
 const GET_CART = gql`
     query {
@@ -13,8 +15,12 @@ const GET_CART = gql`
     `
 
 const CartWidget = () => {
+    const { updatedCart } = useCartContext()
+    const {loading, error, data, refetch} = useQuery(GET_CART)
 
-    const {loading, error, data} = useQuery(GET_CART)
+    useEffect(()=> {
+        refetch();
+    }, [updatedCart, refetch])
 
     if(loading) return 
     if(error) return <p>Something went wrong</p>

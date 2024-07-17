@@ -1,5 +1,6 @@
 import { gql, useMutation } from '@apollo/client';
 import LoadingIcon from './LoadingIcon';
+import { useCartContext } from '../contexts/CartContext';
 
 // add new item to cart
 const ADD_TO_CART = gql`
@@ -16,8 +17,14 @@ const ADD_TO_CART = gql`
 `;
 
 const AddToCartBtn = ({productId}:{productId: string}) => {
+    // context to re-render
+    const { triggerCartUpdate } = useCartContext();
+
     // add to cart
-    const [addToCart, { loading, error }] = useMutation(ADD_TO_CART);
+    const [addToCart, { loading, error }] = useMutation(ADD_TO_CART, {
+        onCompleted: () => triggerCartUpdate(),
+    });
+
     const handleAddItem = async () => {
         try {
             await addToCart({ variables: {productId} });
@@ -26,10 +33,10 @@ const AddToCartBtn = ({productId}:{productId: string}) => {
         }
         };
 
-        if( loading ) return <LoadingIcon/>
-        if( error ) return <p>Something went wrong</p>
+    if( loading ) return <LoadingIcon/>
+    if( error ) return <p>Something went wrong</p>
 
-    return ( 
+    return (
         <button onClick={handleAddItem} className='text-white bg-green-600 rounded-lg px-2 py-1'>Add to Cart</button>
      );
 }

@@ -1,4 +1,5 @@
 import { useMutation, gql } from '@apollo/client';
+import { useCartContext } from '../contexts/CartContext';
 
 const CLEAR_CART = gql`
   mutation ClearCart {
@@ -18,7 +19,13 @@ const CLEAR_CART = gql`
 `;
 
 const ClearCart = () => {
-    const [clearCart, { loading, error }] = useMutation(CLEAR_CART);
+    // context to re-render
+    const { triggerCartUpdate } = useCartContext();
+    
+    // clear all items from cart
+    const [clearCart, { loading, error }] = useMutation(CLEAR_CART, {
+      onCompleted: () => triggerCartUpdate(),
+  });
 
     const clearCartBtn = async () => {
         try {
@@ -28,7 +35,7 @@ const ClearCart = () => {
         }
       };
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return ;
     if (error) return <p>Something went wrong</p>;
 
     return ( 
