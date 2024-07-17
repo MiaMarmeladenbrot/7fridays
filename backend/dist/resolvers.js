@@ -4,8 +4,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const products_json_1 = __importDefault(require("./data/products.json"));
+// productsData is an array of objects, save to products-variable
 const products = products_json_1.default;
+// empty array for saving items to cart
 let cartItems = [];
+// function to calculate total price of all current items in cart
+const calculateTotal = (items) => {
+    return items.reduce((acc, curr) => {
+        const product = products.find((singleProduct) => singleProduct.id === curr.productId);
+        return acc + (product ? product.price * curr.quantity : 0);
+    }, 0);
+};
+// function to find product details and quantity for all current items in cart
+const mapCartItems = (items) => {
+    return items.map((singleItem) => ({
+        product: products.find((singleProduct) => singleProduct.id === singleItem.productId),
+        quantity: singleItem.quantity
+    }));
+};
 const resolvers = {
     Query: {
         // get all products
@@ -14,14 +30,8 @@ const resolvers = {
         product: (_, { id }) => products.find(singleProduct => singleProduct.id === id),
         // get all items from cart with total price
         cart: () => ({
-            items: cartItems.map((singleItem) => ({
-                product: products_json_1.default.find((singleProduct) => singleProduct.id === singleItem.productId),
-                quantity: singleItem.quantity
-            })),
-            total: cartItems.reduce((acc, curr) => {
-                const product = products_json_1.default.find((singleProduct) => singleProduct.id === curr.productId);
-                return acc + (product ? product.price * curr.quantity : 0);
-            }, 0)
+            items: mapCartItems(cartItems),
+            total: calculateTotal(cartItems),
         })
     },
     Mutation: {
@@ -35,14 +45,8 @@ const resolvers = {
                 cartItems.push({ productId, quantity: 1 });
             }
             return {
-                items: cartItems.map((singleItem) => ({
-                    product: products_json_1.default.find((singleProduct) => singleProduct.id === singleItem.productId),
-                    quantity: singleItem.quantity
-                })),
-                total: cartItems.reduce((acc, curr) => {
-                    const product = products_json_1.default.find((singleProduct) => singleProduct.id === curr.productId);
-                    return acc + (product ? product.price * curr.quantity : 0);
-                }, 0)
+                items: mapCartItems(cartItems),
+                total: calculateTotal(cartItems),
             };
         },
         // remove one item from cart via id
@@ -59,14 +63,8 @@ const resolvers = {
                 }
             }
             return {
-                items: cartItems.map((singleItem) => ({
-                    product: products_json_1.default.find((singleProduct) => singleProduct.id === singleItem.productId),
-                    quantity: singleItem.quantity
-                })),
-                total: cartItems.reduce((acc, curr) => {
-                    const product = products_json_1.default.find((singleProduct) => singleProduct.id === curr.productId);
-                    return acc + (product ? product.price * curr.quantity : 0);
-                }, 0)
+                items: mapCartItems(cartItems),
+                total: calculateTotal(cartItems),
             };
         },
         // remove all items from cart

@@ -7,9 +7,26 @@ interface Product {
     description: string;
 }
 
+// productsData is an array of objects, save to products-variable
 const products: Product[] = productsData as Product[];
+
+// empty array for saving items to cart
 let cartItems: { productId: string; quantity: number }[] = [];
 
+// function to calculate total price of all current items in cart
+const calculateTotal = (items: { productId: string; quantity: number}[]): number => {
+    return items.reduce((acc, curr) => {
+        const product = products.find((singleProduct) => singleProduct.id === curr.productId)
+        return acc + (product ? product.price * curr.quantity : 0)
+    }, 0)}
+
+// function to find product details and quantity for all current items in cart
+const mapCartItems = (items: { productId: string; quantity: number }[]) => {
+    return items.map((singleItem) => ({
+        product: products.find((singleProduct) => singleProduct.id === singleItem.productId),
+        quantity: singleItem.quantity
+    }));
+}
 
 const resolvers = {
     Query: {
@@ -21,14 +38,8 @@ const resolvers = {
 
         // get all items from cart with total price
         cart: () => ({
-            items: cartItems.map((singleItem ) => ({
-                product: productsData.find((singleProduct) => singleProduct.id === singleItem.productId),
-                quantity: singleItem.quantity
-            })),
-            total: cartItems.reduce((acc, curr) => {
-                const product = productsData.find((singleProduct) => singleProduct.id === curr.productId)
-                return acc + (product ? product.price * curr.quantity : 0)
-            }, 0)
+            items: mapCartItems(cartItems),
+            total: calculateTotal(cartItems),
         })
     },
     
@@ -41,16 +52,9 @@ const resolvers = {
             } else{
                 cartItems.push({productId, quantity: 1})
             }
-
             return {
-                items: cartItems.map((singleItem) => ({
-                    product: productsData.find((singleProduct) => singleProduct.id === singleItem.productId),
-                    quantity: singleItem.quantity
-                })),
-                total: cartItems.reduce((acc, curr) => {
-                    const product = productsData.find((singleProduct) => singleProduct.id === curr.productId);
-                    return acc + (product ? product.price * curr.quantity : 0)
-                }, 0)
+                items: mapCartItems(cartItems),
+                total: calculateTotal(cartItems),
             }
         },
 
@@ -67,14 +71,8 @@ const resolvers = {
                 }
             }
             return {
-                items: cartItems.map((singleItem) => ({
-                    product: productsData.find((singleProduct) => singleProduct.id === singleItem.productId),
-                    quantity: singleItem.quantity
-                })),
-                total: cartItems.reduce((acc, curr) => {
-                    const product = productsData.find((singleProduct) => singleProduct.id === curr.productId);
-                    return acc + (product ? product.price * curr.quantity : 0)
-                }, 0)
+                items: mapCartItems(cartItems),
+                total: calculateTotal(cartItems),
             }
         },
 

@@ -50,7 +50,7 @@ const CartPage = () => {
                     </Link>
                     <div>
                         <p className='font-poppins-reg'>{singleItem.quantity}x {singleItem.product.name}</p>
-                        <p className='font-poppins-reg'>{singleItem.product.price} €</p>
+                        <p className='font-poppins-reg'>{singleItem.product.price * singleItem.quantity} €</p>
                     </div>
                     </div>
                     <ChangeCartItems productId={singleItem.product.id}/>
