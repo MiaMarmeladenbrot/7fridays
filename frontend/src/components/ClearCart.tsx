@@ -32,7 +32,7 @@ const ClearCart = () => {
     if (error) return <p>Something went wrong</p>;
 
     return ( 
-        <button onClick={clearCartBtn} className='font-poppins-reg text-lg bg-red-600 py-1 px-2 rounded-lg text-white'>Clear Cart</button>
+        <button onClick={clearCartBtn} className='font-poppins-reg bg-red-600 py-1 px-2 rounded-lg text-white'>Clear Cart</button>
      );
 }
  

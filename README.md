@@ -6,9 +6,6 @@ https://blog.logrocket.com/build-graphql-react-app-typescript/
 
 # morgen
 - Daten in States speichern und rerendern
-- Add/remove Buttons
-- clear cart
-- back-arrow
 - ts: type object?
 - server prüfen
 - testing
@@ -25,12 +22,12 @@ https://blog.logrocket.com/build-graphql-react-app-typescript/
 
 # Frontend
 1. drei Seiten: 
-    - Übersichtsseite der Produkte: alle Produkte nach Preis sortiert 
-    - Produktdetailseite: Namen und den Preis des Produkts plus Button für Warenkorb
-    - Warenkorbseite: alle Produkte im Warenkorb, Gesamtpreis, delete-Option
+    - Übersichtsseite der Produkte: alle Produkte nach Preis sortiert ✅
+    - Produktdetailseite: Namen und den Preis des Produkts plus Button für Warenkorb ✅
+    - Warenkorbseite: alle Produkte im Warenkorb, Gesamtpreis, delete-Option ✅
 2. Komponenten:
     - Warenkorb-Widget mit Gesamtpreis ✅
-    - Warenkorb-Button
+    - Warenkorb-Button ✅
     - Hero ✅
 3. Styling mit tailwind ✅
 

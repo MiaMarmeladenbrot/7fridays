@@ -1,6 +1,6 @@
 import { useQuery, gql } from '@apollo/client';
-import ChangeCartItems from '../components/ChangeCartItems';
 import { useParams } from 'react-router-dom';
+import AddToCartBtn from '../components/AddToCartBtn';
 
 const GET_ONE_PRODUCT = gql`
     query getOneProduct($id: ID!) {
@@ -29,7 +29,7 @@ const ProductDetailsPage = () => {
             <h3 className='font-poppins-bold text-3xl mb-2'>{data.product.name}</h3>
             <p className='font-poppins-reg mb-3'>{data.product.price} €</p> 
             <p className='font-poppins-reg max-w-96 mb-5'>{data.product.description}</p> 
-            <ChangeCartItems productId={data.product.id}/>
+            <AddToCartBtn productId={data.product.id}/>
         </div>
     </main> 
     );

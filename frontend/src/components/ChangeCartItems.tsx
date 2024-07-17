@@ -1,21 +1,10 @@
 import { CiSquareMinus } from "react-icons/ci";
 import { CiSquarePlus } from "react-icons/ci";
 import { IconContext } from "react-icons";
-import { useQuery, gql, useMutation } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 import LoadingIcon from "./LoadingIcon";
 
-// get all cart-items to check if this product is already in the cart
-const GET_CART = gql`
-    query {
-        cart {
-            items {
-                product{
-                    id
-                }
-            }
-        }
-    }
-    `
+
 
 // add new item to cart
 const ADD_TO_CART = gql`
@@ -46,11 +35,7 @@ const REMOVE_FROM_CART = gql`
     }
 `;
 
-const ChangeCartItems = ({productId}:{productId: string}) => {
-    // check cart
-    const {loading: queryLoading, error: queryError, data} = useQuery(GET_CART)
-    const isItemInCart = data?.cart?.items.some((singleItem: any) => singleItem.product.id === productId)    
-
+const ChangeCartItems = ({productId}:{productId: string}) => {  
     // add to cart
     const [addToCart, { loading: addLoading, error: addError }] = useMutation(ADD_TO_CART);
     const handleAddItem = async () => {
@@ -72,22 +57,19 @@ const ChangeCartItems = ({productId}:{productId: string}) => {
       };
 
 
-    if( queryLoading || addLoading || removeLoading ) return <LoadingIcon/>
-    if( queryError || addError || removeError ) return <p>Something went wrong</p>
+    if( addLoading || removeLoading ) return <LoadingIcon/>
+    if( addError || removeError ) return <p>Something went wrong</p>
 
     return ( 
     <IconContext.Provider value={{ size: "1.2rem" }}>
-        <div className="flex gap-3 relative">
-            {isItemInCart ? 
-                <button className="cursor-pointer absolute right-0" onClick={handleRemoveItem}>
+        <div className="flex flex-col gap-3">
+                <button className="cursor-pointer" onClick={handleRemoveItem}>
                     <CiSquareMinus />
                 </button>
-                :
-                <button className="cursor-pointer absolute right-0" onClick={handleAddItem}>
+                
+                <button className="cursor-pointer " onClick={handleAddItem}>
                     <CiSquarePlus />
-                    <p>Add to cart</p>
                 </button>
-            }
         </div>
     </IconContext.Provider>
     );
