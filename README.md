@@ -4,14 +4,6 @@ https://www.youtube.com/watch?v=BcLNfwF04Kw
 <br>
 https://blog.logrocket.com/build-graphql-react-app-typescript/
 
-# morgen
-- aufräumen
-- ts: type object?
-- alles noch mal durchgehen - was wann warum wo?
-    - dist ordner
-    - Vorteile graphql vs rest api
-    - 
-- testing
 
 # Backend
 1. GraphQL Server aufsetzen
