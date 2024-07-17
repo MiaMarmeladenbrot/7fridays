@@ -1,6 +1,7 @@
 import { useQuery, gql } from '@apollo/client';
 import ChangeCartItems from '../components/ChangeCartItems';
 import { Link } from 'react-router-dom';
+import ClearCart from '../components/ClearCart';
 
 const GET_CART = gql`
     query {
@@ -22,8 +23,6 @@ const GET_CART = gql`
 
 const CartPage = () => {
     const {loading, error, data} = useQuery(GET_CART)
-    // const {cartItems, setCartItems} = useState(data.cart.items)
-    // console.log(data.cart.items);
 
     if(loading) return <p>Loading</p>
     if(error) return <p>Something went wrong</p>
@@ -40,7 +39,7 @@ const CartPage = () => {
                     <div>
                         <p className='font-poppins-reg'>{singleItem.quantity}x {singleItem.product.name}</p>
                         <p className='font-poppins-reg'>{singleItem.product.price} €</p>
-                        <ChangeCartItems/>
+                        <ChangeCartItems productId={singleItem.product.id}/>
                     </div>
                 </div>
             ))}
@@ -49,7 +48,7 @@ const CartPage = () => {
 
         <div>
             <button className='font-poppins-reg text-lg bg-green-600 py-1 px-2 rounded-lg mb-3 text-white mr-10'>Buy now</button>
-            <button className='font-poppins-reg text-lg bg-red-600 py-1 px-2 rounded-lg text-white'>Clear Cart</button>
+            <ClearCart/>
         </div>
         
     </main> 

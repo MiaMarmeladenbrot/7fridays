@@ -15,7 +15,7 @@ const CartWidget = () => {
 
     const {loading, error, data} = useQuery(GET_CART)
 
-    if(loading) return <p>Loading</p>
+    if(loading) return 
     if(error) return <p>Something went wrong</p>
 
     return ( 

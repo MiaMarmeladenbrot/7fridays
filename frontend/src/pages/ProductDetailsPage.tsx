@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 const GET_ONE_PRODUCT = gql`
     query getOneProduct($id: ID!) {
         product(id: $id) {
+            id
             name
             price
             description
@@ -19,7 +20,7 @@ const ProductDetailsPage = () => {
     const {loading, error, data} = useQuery(GET_ONE_PRODUCT, { variables: { id }})
 
     if(loading) return <p>Loading</p>
-    if(error) return <p>Something went wrong</p>
+    if(error) return <p>Something went wrong</p>    
 
     return ( 
     <main className="px-10 flex gap-10 justify-center mt-24">
@@ -28,7 +29,7 @@ const ProductDetailsPage = () => {
             <h3 className='font-poppins-bold text-3xl mb-2'>{data.product.name}</h3>
             <p className='font-poppins-reg mb-3'>{data.product.price} €</p> 
             <p className='font-poppins-reg max-w-96 mb-5'>{data.product.description}</p> 
-            <ChangeCartItems/>
+            <ChangeCartItems productId={data.product.id}/>
         </div>
     </main> 
     );

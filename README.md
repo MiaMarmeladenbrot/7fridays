@@ -1,13 +1,15 @@
 https://www.youtube.com/watch?v=5199E50O7SI
 <br>
 https://www.youtube.com/watch?v=BcLNfwF04Kw
+<br>
+https://blog.logrocket.com/build-graphql-react-app-typescript/
 
 # morgen
-- Produkte nach Preis sortieren
 - Daten in States speichern und rerendern
 - Add/remove Buttons
 - clear cart
 - back-arrow
+- ts: type object?
 - server prüfen
 - testing
 
