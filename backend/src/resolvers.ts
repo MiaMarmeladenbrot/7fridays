@@ -5,9 +5,10 @@ interface Product {
     name: string;
     price: number;
     description: string;
+    image: string;
 }
 
-// productsData is an array of objects, save to products-variable
+// save productsData (array) to products-variable
 const products: Product[] = productsData as Product[];
 
 // empty array for saving items to cart
