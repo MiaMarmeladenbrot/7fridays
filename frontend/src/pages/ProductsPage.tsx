@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import LoadingIcon from '../components/LoadingIcon';
 import { Product } from '../types/types';
+import ErrorMessage from '../components/ErrorMessage';
 
 const GET_PRODUCTS = gql`
     query {
@@ -20,7 +21,7 @@ const ProductsPage = () => {
     const { loading, error, data } = useQuery<{ products: Product[] }>(GET_PRODUCTS);
 
     if(loading) return <LoadingIcon/>
-    if(error) return <p>Something went wrong</p>
+    if(error) return <ErrorMessage/>
 
     const sortedProducts = data?.products ? [...data.products].sort((a,b) => a.price - b.price) : []
 

@@ -6,6 +6,7 @@ import { useCartContext } from '../contexts/CartContext';
 import { useEffect } from 'react';
 import LoadingIcon from '../components/LoadingIcon';
 import { CartItem, Cart } from '../types/types';
+import ErrorMessage from '../components/ErrorMessage';
 
 const GET_CART = gql`
     query {
@@ -34,7 +35,7 @@ const CartPage = () => {
     }, [updatedCart, refetch])
 
     if(loading) return <LoadingIcon/>
-    if(error) return <p>Something went wrong</p>
+    if(error) return <ErrorMessage/>
 
     return ( 
     <main className='mt-28 px-10 flex flex-col items-center'>

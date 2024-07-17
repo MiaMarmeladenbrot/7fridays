@@ -1,5 +1,6 @@
 import { useMutation, gql } from '@apollo/client';
 import { useCartContext } from '../contexts/CartContext';
+import LoadingIcon from './LoadingIcon';
 
 const CLEAR_CART = gql`
   mutation ClearCart {
@@ -35,11 +36,12 @@ const ClearCart = () => {
         }
       };
 
-    if (loading) return ;
-    if (error) return <p>Something went wrong</p>;
-
     return ( 
+      <>
+        {loading && <div className="relative"><LoadingIcon/></div>}
+        {error && <p className="font-poppins-reg">Cannot clear cart</p>}
         <button onClick={clearCartBtn} className='font-poppins-reg bg-red-600 py-1 px-2 rounded-lg text-white'>Clear Cart</button>
+      </>
      );
 }
  

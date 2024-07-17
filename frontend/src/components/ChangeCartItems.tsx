@@ -63,11 +63,10 @@ const ChangeCartItems = ({productId}:{productId: string}) => {
         }
       };
 
-    if( addLoading || removeLoading ) return <LoadingIcon/>
-    if( addError || removeError ) return <p>Something went wrong</p>
-
     return ( 
     <IconContext.Provider value={{ size: "1.2rem" }}>
+        {(addLoading || removeLoading) && <div className="relative"><LoadingIcon/></div>}
+        {(addError || removeError) && <p className="font-poppins-reg">Cannot change cart</p>}
         <div className="flex flex-col gap-3">
                 <button className="cursor-pointer" onClick={handleRemoveItem}>
                     <CiSquareMinus />
@@ -80,5 +79,5 @@ const ChangeCartItems = ({productId}:{productId: string}) => {
     </IconContext.Provider>
     );
 }
- 
+
 export default ChangeCartItems;

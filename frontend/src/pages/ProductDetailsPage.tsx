@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import AddToCartBtn from '../components/AddToCartBtn';
 import LoadingIcon from '../components/LoadingIcon';
 import { Product } from '../types/types';
+import ErrorMessage from '../components/ErrorMessage';
 
 const GET_ONE_PRODUCT = gql`
     query getOneProduct($id: ID!) {
@@ -22,7 +23,7 @@ const ProductDetailsPage = () => {
     const { loading, error, data } = useQuery<{ product: Product }>(GET_ONE_PRODUCT, { variables: { id }});
 
     if(loading) return <LoadingIcon/>
-    if(error) return <p>Something went wrong</p>    
+    if(error) return <ErrorMessage/>   
 
     return ( 
     <main className="px-10 flex gap-10 justify-center mt-24">

@@ -5,16 +5,17 @@ interface CartContextType {
     triggerCartUpdate: () => void;
 }
 
-const CartContext = createContext<CartContextType | undefined>(undefined);
-
 interface CartProviderProps {
     children: ReactNode;
 }
+
+const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     // boolean-state to trigger updating of cart
     const [updatedCart, setUpdatedCart] = useState(false);
     
+    // function to change state
     const triggerCartUpdate = () => {
         setUpdatedCart(!updatedCart)
     };

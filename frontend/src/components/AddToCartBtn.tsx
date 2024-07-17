@@ -33,11 +33,12 @@ const AddToCartBtn = ({productId}:{productId: string}) => {
         }
         };
 
-    if( loading ) return <LoadingIcon/>
-    if( error ) return <p>Something went wrong</p>
-
     return (
-        <button onClick={handleAddItem} className='text-white bg-green-600 rounded-lg px-2 py-1'>Add to Cart</button>
+        <>
+            {loading && <div className="relative"><LoadingIcon/></div>}
+            {error && <p className="font-poppins-reg">Cannot add item</p>}
+            {!loading && !error && <button onClick={handleAddItem} className='text-white bg-green-600 rounded-lg px-2 py-1'>Add to Cart</button>}
+        </>
      );
 }
  
