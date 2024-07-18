@@ -19,12 +19,12 @@ const GET_PRODUCTS = gql`
     `
 
 const ProductsPage = () => {
-    const { loading, error, data } = useQuery<{ products: Product[] }>(GET_PRODUCTS);
+    const { loading, error, data } = useQuery<{ products: Product[] }>(GET_PRODUCTS);    
 
     if(loading) return <LoadingIcon/>
     if(error) return <ErrorMessage/>
 
-    const sortedProducts = data?.products ? [...data.products].sort((a,b) => a.price - b.price) : []
+    const sortedProducts = data?.products ? [...data.products].sort((a: Product, b: Product) => a.price - b.price) : []
 
     return ( 
     <main className="mb-20 flex flex-col items-center">

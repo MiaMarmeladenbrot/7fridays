@@ -32,7 +32,7 @@ const CartPage = () => {
 
     useEffect(()=> {
         refetch();
-    }, [updatedCart, refetch])
+    }, [updatedCart])
 
     if(loading) return <LoadingIcon/>
     if(error) return <ErrorMessage/>

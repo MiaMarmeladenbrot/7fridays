@@ -20,7 +20,7 @@ const CartWidget = () => {
 
     useEffect(()=> {
         refetch();
-    }, [updatedCart, refetch])
+    }, [updatedCart])
 
     return ( 
         <IconContext.Provider value={{ color: "white", size: "1.2rem" }}>
