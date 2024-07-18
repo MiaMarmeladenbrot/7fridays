@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const products_json_1 = __importDefault(require("./data/products.json"));
-// productsData is an array of objects, save to products-variable
+// save productsData (array) to products-variable
 const products = products_json_1.default;
 // empty array for saving items to cart
 let cartItems = [];

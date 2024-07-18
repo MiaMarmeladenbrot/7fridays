@@ -4,6 +4,7 @@ import Hero from '../components/Hero';
 import LoadingIcon from '../components/LoadingIcon';
 import { Product } from '../types/types';
 import ErrorMessage from '../components/ErrorMessage';
+import ChangeCartItems from '../components/ChangeCartItems';
 
 const GET_PRODUCTS = gql`
     query {
@@ -33,7 +34,10 @@ const ProductsPage = () => {
         <div className='px-10 grid grid-cols-4 gap-12'>
             {!loading && !error &&
                 sortedProducts.map((singleProduct: Product) => (
-                    <div key={singleProduct.id}  className='mb-5' > 
+                    <div key={singleProduct.id}  className='mb-5 relative' > 
+                    <div className='absolute bottom-3 right-0'>
+                        <ChangeCartItems productId={singleProduct.id}/>
+                    </div>
                         <Link  to={`/products/${singleProduct.id}`}>
                             <img className='w-56 h-72 object-cover mb-3 rounded-lg' src={singleProduct.image} alt={singleProduct.name} />
                             <h3 className='mb-2 font-poppins-reg text-lg'>{singleProduct.name}</h3>
