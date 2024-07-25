@@ -35,5 +35,5 @@ const startServer = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 // error handling for starting server
 startServer().catch((error) => {
-    console.error('Server failed to start', error);
+    console.error("Server failed to start", error);
 });

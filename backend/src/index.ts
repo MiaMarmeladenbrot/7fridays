@@ -23,12 +23,10 @@ const startServer = async () => {
 
   // start express server on port 4000
   // when started, GraphQL endpoint is available on that port
-  app.listen({ port: 4000 }, () =>
-    console.log(`Server ready at http://localhost:4000/graphql`)
-  );
+  app.listen({ port: 4000 }, () => console.log(`Server ready at http://localhost:4000/graphql`));
 };
 
 // error handling for starting server
 startServer().catch((error) => {
-    console.error('Server failed to start', error);
-  });
+  console.error("Server failed to start", error);
+});

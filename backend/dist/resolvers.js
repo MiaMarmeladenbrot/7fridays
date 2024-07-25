@@ -19,7 +19,7 @@ const calculateTotal = (items) => {
 const mapCartItems = (items) => {
     return items.map((singleItem) => ({
         product: products.find((singleProduct) => singleProduct.id === singleItem.productId),
-        quantity: singleItem.quantity
+        quantity: singleItem.quantity,
     }));
 };
 const resolvers = {
@@ -27,12 +27,12 @@ const resolvers = {
         // get all products
         products: () => products,
         // get one product via id
-        product: (_, { id }) => products.find(singleProduct => singleProduct.id === id),
+        product: (_, { id }) => products.find((singleProduct) => singleProduct.id === id),
         // get all items from cart with total price
         cart: () => ({
             items: mapCartItems(cartItems),
             total: calculateTotal(cartItems),
-        })
+        }),
     },
     Mutation: {
         // add one item to cart via id
@@ -74,7 +74,7 @@ const resolvers = {
                 items: [],
                 total: 0,
             };
-        }
-    }
+        },
+    },
 };
 exports.default = resolvers;
