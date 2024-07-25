@@ -1,4 +1,5 @@
 # Aufgabe
+
 Die Aufgabe besteht darin einen kleinen Shop zu bauen. Dieser soll folgende Seiten beinhalten:
 
 - Übersichtsseite der Produkte
@@ -14,6 +15,7 @@ Auf jeder Seite ist ein Warenkorb-Widget sichtbar, welches den aktuellen Gesamtp
 Die Warenkorbseite zeigt alle Produkte an, die sich im Warenkorb befinden. Einzelne Produkte können aus dem Warenkorb entfernt werden.
 
 ## Hinweise
+
 - Umsetzung Frontend mit React und Typescript
 - Umsetzung Backend mit Typescript und GraphQL
 - Styling mit Tailwind nach eigenem Ermessen
@@ -22,4 +24,5 @@ Die Warenkorbseite zeigt alle Produkte an, die sich im Warenkorb befinden. Einze
 - Du kannst products.json als Datengrundlage nehmen
 
 # Planung
+
 https://www.figma.com/board/8Qlmey41xG2nBImozwvVuF/7friday-Plan?node-id=0-1&t=gQi03h9j8kmmnW1r-0

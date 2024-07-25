@@ -1,19 +1,19 @@
 export interface Product {
-    id: string;
-    name: string;
-    price: number;
-    description: string;
-    image: string;
+  id: string;
+  name: string;
+  price: number;
+  description: string;
+  image: string;
 }
 
 export interface CartItem {
-    product: Product;
-    quantity: number;
+  product: Product;
+  quantity: number;
 }
 
 export interface Cart {
-   cart: { 
+  cart: {
     items: CartItem[];
     total: number;
-    };
+  };
 }
